@@ -4,7 +4,8 @@ import ProductCard from '@/components/ProductCard';
 export const revalidate = 0;
 
 export default async function Tienda() {
-  let products = [];
+  let products: any[] = [];
+  
   try {
     products = await sql`SELECT * FROM products ORDER BY created_at DESC`;
   } catch (error) {}
