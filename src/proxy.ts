@@ -6,7 +6,7 @@ export function proxy(request: NextRequest) {
 
   if (request.nextUrl.pathname.startsWith('/admin')) {
     if (!authCookie || authCookie.value !== 'true') {
-      return NextResponse.redirect(new URL('/', request.url));
+      return NextResponse.redirect(new URL('/login', request.url));
     }
   }
 

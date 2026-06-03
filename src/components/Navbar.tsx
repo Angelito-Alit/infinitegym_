@@ -17,7 +17,7 @@ export default function Navbar() {
         <Link href="/cotizacion" style={{ padding: '0.5rem', backgroundColor: '#f5f5f5', borderRadius: '50%' }}>
           🛒
         </Link>
-        <Link href="/admin" style={{ padding: '0.5rem 1rem', backgroundColor: '#f5f5f5', borderRadius: '4px', fontSize: '0.9rem' }}>
+        <Link href="/login" style={{ padding: '0.5rem 1rem', backgroundColor: '#f5f5f5', borderRadius: '4px', fontSize: '0.9rem' }}>
           Iniciar sesión
         </Link>
         <a href="https://wa.me/5214462000666" target="_blank" rel="noopener noreferrer" style={{ backgroundColor: 'var(--accent-color)', color: 'var(--accent-text)', padding: '0.5rem 1rem', borderRadius: '4px', fontWeight: 'bold', fontSize: '0.9rem' }}>
@@ -26,4 +26,4 @@ export default function Navbar() {
       </div>
     </nav>
   );
-} 
+}
