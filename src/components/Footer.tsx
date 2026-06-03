@@ -1,7 +1,7 @@
 import { sql } from '@/lib/db';
 
 export default async function Footer() {
-  let footerText = "© 2026 Infinité Gym. Todos los derechos reservados.";
+  let footerText = "Derechos de autor y nombre de la empresa © 2026";
 
   try {
     const settings = await sql`SELECT config_data FROM site_settings WHERE id = 1`;
@@ -12,13 +12,18 @@ export default async function Footer() {
 
   return (
     <footer style={{ 
-      backgroundColor: 'var(--card-bg)', 
-      borderTop: '1px solid var(--border-color)', 
-      padding: '2rem', 
-      textAlign: 'center',
-      marginTop: 'auto'
+      backgroundColor: 'var(--footer-bg)', 
+      color: 'var(--footer-text)',
+      padding: '3rem 2rem', 
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginTop: 'auto',
+      flexWrap: 'wrap',
+      gap: '1rem'
     }}>
-      <p style={{ color: '#888', fontSize: '1rem' }}>
+      <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>INFINITÉ PRODUCTS</div>
+      <p style={{ color: '#aaa', fontSize: '0.9rem' }}>
         {footerText}
       </p>
     </footer>
