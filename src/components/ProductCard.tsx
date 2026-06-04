@@ -1,32 +1,31 @@
-'use client';
+import Image from 'next/image';
 
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  image_url: string;
+interface ProductCardProps {
+  title: string;
+  description: string;
+  imageSrc: string;
 }
 
-export default function ProductCard({ product }: { product: Product }) {
-  const addToQuote = () => {
-    const quoteList = JSON.parse(localStorage.getItem('quote') || '[]');
-    quoteList.push(product);
-    localStorage.setItem('quote', JSON.stringify(quoteList));
-    alert('Producto añadido a tu lista de cotización.');
-    // Here you would ideally trigger an event to update a cart icon counter in the Navbar
-  };
-
+export default function ProductCard({ title, description, imageSrc }: ProductCardProps) {
   return (
-    <div style={{ backgroundColor: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '8px', padding: '1rem', display: 'flex', flexDirection: 'column', gap: '1rem', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}>
-      <img src={product.image_url} alt={product.name} style={{ width: '100%', height: '200px', objectFit: 'contain', borderRadius: '4px' }} />
-      <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold' }}>{product.name}</h3>
-      <p style={{ color: '#555', fontWeight: 'bold', fontSize: '1.2rem' }}>${product.price}</p>
-      <button 
-        onClick={addToQuote}
-        style={{ backgroundColor: 'var(--accent-color)', color: 'var(--accent-text)', padding: '0.8rem', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', marginTop: 'auto', transition: 'background-color 0.2s' }}
-      >
-        Añadir para cotizar
-      </button>
+    <div className="relative overflow-hidden rounded-sm bg-gradient-to-b from-white/10 to-[#0a0a0a] backdrop-blur-2xl border border-white/5 group transition-all duration-500 hover:border-purple-500/30">
+      <div className="h-80 w-full relative overflow-hidden bg-[#111]">
+        <Image 
+          src={imageSrc} 
+          alt={title} 
+          fill 
+          className="object-cover opacity-80 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 mix-blend-luminosity group-hover:mix-blend-normal" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
+      </div>
+      
+      <div className="p-10 relative z-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]">
+        <h3 className="text-2xl font-light tracking-[0.2em] text-white uppercase mb-4">{title}</h3>
+        <p className="text-gray-400 font-light text-sm leading-relaxed mb-8 min-h-[80px]">{description}</p>
+        <button className="w-full py-4 bg-transparent border border-gray-700 text-white uppercase tracking-[0.2em] text-xs hover:border-purple-500 hover:text-purple-300 hover:shadow-[0_0_15px_rgba(147,51,234,0.3)] transition-all duration-300">
+          Ver equipos
+        </button>
+      </div>
     </div>
   );
 }
